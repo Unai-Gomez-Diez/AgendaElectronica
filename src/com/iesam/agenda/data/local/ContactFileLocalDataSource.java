@@ -49,7 +49,7 @@ public class ContactFileLocalDataSource {
     public Contact findById(Integer contactId) {
         List<Contact> contacts = findAll();
         for (Contact contact : contacts) {
-            if (Objects.equals(contacts.id, alumnoId)) {
+            if (Objects.equals(contact.getId(), contactId)) {
                 return contact;
             }
         }

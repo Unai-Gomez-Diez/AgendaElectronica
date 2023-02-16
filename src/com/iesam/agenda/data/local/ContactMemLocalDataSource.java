@@ -22,10 +22,14 @@ public class ContactMemLocalDataSource {
     private ContactMemLocalDataSource() {
     }
 
+
     public void save(Contact contact) {
-        List<Contact> contacts = findAll();
-        contacts.add(contact);
-        saveToFile(contacts);
+        storage.put(contact.getId(), contact)
+    }
+
+
+    public List<Contact> findAll(){
+        return new ArrayList<>(storage.values());
     }
 
     private void saveToFile(List<Contact> contacts) {
@@ -44,7 +48,7 @@ public class ContactMemLocalDataSource {
     public Contact findById(Integer contactId) {
         List<Contact> contacts = findAll();
         for (Contact contact : contacts) {
-            if (Objects.equals(contact.id, alumnoId)) {
+            if (Objects.equals(contact.getId(), contactId)) {
                 return contact;
             }
         }
